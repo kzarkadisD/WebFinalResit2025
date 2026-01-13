@@ -1,0 +1,52 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-0.5 mb-1 border-bottom"
+        style="position: fixed; top: 0; left: 0; right: 0; background-color: #fff; z-index: 1000;">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-3 mb-2 mb-md-0 text-center">
+                <a href="{% url 'product_list' %}"
+                   class="d-flex align-items-center link-body-emphasis text-decoration-none clutterFree_existingDuplicate clutterFree_noIcon cf_div_theme_light">
+                    <i class="bi bi-phone-flip me-2" style="font-size: 250%; color: #FFFFFF;"></i>
+                    <!-- Make the logo white -->
+                    <h3 class="mb-0">eShop Planet</h3>
+                </a>
+            </div>
+
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="{% url 'product_list' %}" class="nav-link px-2" style="color: #00FFD8;">Shop</a></li>
+                <li><a href="{% url 'about' %}" class="nav-link px-2" style="color: #00FFD8;">About Us</a></li>
+                <!-- Make "About Us" more vivid -->
+                <li><a href="{% url 'product_search' %}" class="nav-link px-2" style="color: #00FFD8;">Search</a></li>
+                <!-- Make "Search" more vivid -->
+            </ul>
+
+            <div class="col-md-3 text-center">
+                {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
+                    </form>
+                {% else %}
+                    <a href="/admin" class="btn btn-outline-primary me-2">Login</a>
+                {% endif %}
+                <a href="/signup" class="btn btn-primary">Signup</a>
+            </div>
+  {% if user.is_authenticated %}
+        <div class="col-md-3 mb-2 mb-md-0 text-center">
+                    <h3 class="mb-0">Welcome {{ user.username }}</h3>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+    <div>
+       <div>
+              <a href="#" class="h3">
+                Items in cart {{ request.session.cart|length}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"></path>
+</svg>
+              </a>
+            </div>
+    </div>
+    </div>
+</header>

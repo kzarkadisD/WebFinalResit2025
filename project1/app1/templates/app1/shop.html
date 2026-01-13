@@ -1,0 +1,72 @@
+{% extends 'app1/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <!-- Filter buttons -->
+    <div class="container mt-3">
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <a href="{% url 'product_list' %}" class="btn btn-primary">All Products</a>
+            </div>
+            <div class="col-md-9">
+                <div class="btn-group" role="group">
+                    {% for category in categories %}
+                        <a href="{% url 'product_list' %}?category={{ category.id }}"
+                           class="btn btn-primary">{{ category.name }}</a>
+                        {% for subcategory in subcategories %}
+                            {% if subcategory.parent_category == category %}
+                                <a href="{% url 'product_list' %}?subcategory={{ subcategory.id }}"
+                                   class="btn btn-secondary">{{ subcategory.name }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container mt-3">
+        <div class="row" id="product-list">
+            <!-- Loop through products -->
+            {% for product in products %}
+                <div class="col-md-4 mb-4 product-item" data-category="{{ product.category.id }}"
+                     data-subcategory="{{ product.sub_category.id }}">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top"
+                                         src="{% static 'app1/'|add:product.image %}" alt="{{ product.name }}"></a>
+                        <div class="card-body text-center">
+                            <h4 class="card-title">
+                                <a href="#">{{ product.name }}</a>
+                            </h4>
+                            <!-- Show Product Rating as Numeric Value -->
+                            <p class="card-subtitle mb-2 text">Rating: {{ product.ratingavg }}</p>
+                            <!-- Subcategory Highlight -->
+                            <!-- Subcategory Highlight -->
+                            <p class="card-subtitle mb-2 text">{{ product.sub_category }}</p>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text">Price: ${{ product.price }}</p>
+                            {% if user.is_authenticated %}
+                                <div id="rating" data-item-id="{{ product.id }}">
+                                    <span class="star" data-value="1">★</span>
+                                    <span class="star" data-value="2">★</span>
+                                    <span class="star" data-value="3">★</span>
+                                    <span class="star" data-value="4">★</span>
+                                    <span class="star" data-value="5">★</span>
+                                </div>
+                            {% endif %}
+
+                            <!-- Bootstrap Buy Button -->
+                            <div class="d-flex justify-content-center">
+                                <a href="{% url 'cart_add' product.id %}" class="btn btn-primary">
+                                    Add to Cart
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

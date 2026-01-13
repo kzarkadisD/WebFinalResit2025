@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head -->
+
+{% include 'app1/head.html' %}
+
+<!-- Body -->
+
+<body class="custom-bg-light-gray">
+
+	<!-- Header -->
+
+	{% include 'app1/header.html' %}
+
+	<!-- Main -->
+
+    <main style="padding-top: 10rem; padding-bottom: 10rem;">
+
+        {% block content %}
+
+		{% endblock %}
+
+    </main>
+
+	<!-- Footer -->
+
+	{% include 'app1/footer.html' %}
+
+</body>
+</html>

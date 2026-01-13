@@ -1,0 +1,51 @@
+{% extends 'app1/base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <!-- Search bar -->
+<!-- Search bar -->
+<div class="container mt-3">
+	<div class="row mb-3">
+	  <div class="col-md-12">
+		<form id="search-form" method="GET" action="{% url 'product_search' %}">
+		  <div class="input-group">
+			<input type="text" id="search-input" name="q" class="form-control" placeholder="Search by name or description">
+			<div class="input-group-append">
+			  <button class="btn btn-primary" type="submit">Search</button>
+			</div>
+		  </div>
+		</form>
+	  </div>
+	</div>
+  </div>
+
+
+  <!-- Main content -->
+  <div class="container mt-3">
+    <div class="row" id="product-list">
+      <!-- Loop through filtered products -->
+      {% for product in products %}
+        <div class="col-md-4 mb-4 product-item" data-category="{{ product.category.id }}" data-subcategory="{{ product.sub_category.id }}">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top"
+                src="{% static 'app1/'|add:product.image %}" alt="{{ product.name }}"></a>
+            <div class="card-body text-center">
+              <h4 class="card-title">
+                <a href="#">{{ product.name }}</a>
+              </h4>
+              <!-- Subcategory Highlight -->
+              <p class="card-subtitle mb-2 text-muted">{{ product.sub_category }}</p>
+              <p class="card-text">{{ product.description }}</p>
+              <p class="card-text">Price: ${{ product.price }}</p>
+              <!-- Bootstrap Buy Button -->
+              <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-primary">Buy Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
