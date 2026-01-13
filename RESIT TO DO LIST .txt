@@ -1,0 +1,20 @@
+Search bar
+  always visible, remove button
+
+Registration form 
+  inside Django app
+  input validation 
+
+Admin Panel 
+  privileged user, makes adds products, alters products
+
+Cart 
+  inside Django app
+  preview order
+  mock order prompt
+  make a field to input some user data like name, address, phone etc ( validate all )
+  order history??
+  
+  
+
+  
