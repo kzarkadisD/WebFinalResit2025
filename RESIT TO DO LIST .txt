@@ -14,7 +14,3 @@ Cart
   mock order prompt
   make a field to input some user data like name, address, phone etc ( validate all )
   order history??
-  
-  
-
-  
