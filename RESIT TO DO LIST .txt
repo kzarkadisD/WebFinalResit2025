@@ -14,3 +14,5 @@ Cart
   mock order prompt
   make a field to input some user data like name, address, phone etc ( validate all )
   order history??
+
+Make website workl on resised windows, burger navbar, resise the footer 
