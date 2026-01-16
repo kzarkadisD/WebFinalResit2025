@@ -20,4 +20,3 @@ urlpatterns = [
     path('', include('app1.urls')),
     path('', include('users.urls')),
 ]
-
