@@ -2,8 +2,9 @@ Search bar
   always visible, remove button
 
 Registration form 
-  inside Django app
-  input validation 
+  inside Django app 
+  login page 
+  input validation ( password complexity se 2 simeia server kai client) 
 
 Admin Panel 
   privileged user, makes adds products, alters products
