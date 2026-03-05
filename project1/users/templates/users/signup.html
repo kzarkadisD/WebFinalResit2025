@@ -1,29 +1,53 @@
 {% extends 'app1/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'users/signup.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <h2 class="text-center">Sign Up</h2>
-      <form method="post" action="{% url 'signup' %}" class="mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center mb-4">Sign Up</h2>
+      <form method="post" action="{% url 'signup' %}">
         {% csrf_token %}
-        <div class="mb-3">
-          <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
-          {{ form.username }}
+
+        <div class="mb-3 row align-items-center">
+          <label for="{{ form.username.id_for_label }}" class="col-sm-4 col-form-label">Username</label>
+          <div class="col-sm-8">
+            {{ form.username }}
+            {{ form.username.errors }}
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
-          {{ form.email }}
+
+        <div class="mb-3 row align-items-center">
+          <label for="{{ form.email.id_for_label }}" class="col-sm-4 col-form-label">Email</label>
+          <div class="col-sm-8">
+            {{ form.email }}
+            {{ form.email.errors }}
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="{{ form.password1.id_for_label }}" class="form-label">Password</label>
-          {{ form.password1 }}
+
+        <div class="mb-3 row align-items-center">
+          <label for="{{ form.password1.id_for_label }}" class="col-sm-4 col-form-label">Password</label>
+          <div class="col-sm-8">
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Password</label>
-          {{ form.password2 }}
+
+        <div class="mb-3 row align-items-center">
+          <label for="{{ form.password2.id_for_label }}" class="col-sm-4 col-form-label">Confirm Password</label>
+          <div class="col-sm-8">
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Sign Up</button>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
       </form>
     </div>
   </div>

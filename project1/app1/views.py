@@ -5,6 +5,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView
 
+from .forms import CheckoutForm
+
 from .cart import Cart
 from .models import *
 from django.db.models import Q, Avg
@@ -83,3 +85,17 @@ def cart_remove(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
     return redirect('cart_detail')
+
+def checkout(request):
+
+    if request.method == "POST":
+        form = CheckoutForm(request.POST)
+
+        if form.is_valid():
+            # normally you would process payment here
+            return render(request, "checkout_success.html")
+
+    else:
+        form = CheckoutForm()
+
+    return render(request, "app1/checkout.html", {"form": form})

@@ -45,3 +45,4 @@ class Rating(models.Model):
 
     def __str__(self):
         return f"Rating {self.product_id} - {self.user_id} - {self.rating} "
+    

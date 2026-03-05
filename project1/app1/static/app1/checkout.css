@@ -1,0 +1,50 @@
+body {
+    background-color: #171717;
+    color: white;
+    font-family: Arial;
+}
+
+.checkout-container {
+    width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 25px;
+    background-color: #2D2D2D;
+    border-radius: 6px;
+}
+
+h2 {
+    color: #00FFD8;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    background-color: #1A1A1A;
+    border: 1px solid #444;
+    color: white;
+}
+
+.btn {
+    background-color: #00FFD8;
+    color: black;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: black;
+    color: #00FFD8;
+    border: 2px solid #00FFD8;
+}
+
+.error {
+    margin-top: 15px;
+    color: red;
+}

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Checkout</title>
+<link rel="stylesheet" href="{% static 'app1/checkout.css' %}">
+</head>
+<body>
+
+<div class="checkout-container">
+<h2>Checkout</h2>
+
+{% if cart|length > 0 %}
+
+<h3>Order Summary</h3>
+<table class="checkout-table">
+<tr>
+<th>Product</th>
+<th>Quantity</th>
+<th>Total</th>
+</tr>
+
+{% for item in cart %}
+<tr>
+<td>{{ item.product.name }}</td>
+<td>{{ item.quantity }}</td>
+<td>€{{ item.total_price }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<p class="cart-total"><strong>Total: €{{ cart.get_total_price }}</strong></p>
+
+<form method="POST">
+    {% csrf_token %}
+    <h3>Billing Information</h3>
+    <label for="name">Full Name:</label><br>
+    <input type="text" name="name" id="name" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" name="email" id="email" required><br><br>
+
+    <label for="address">Address:</label><br>
+    <textarea name="address" id="address" rows="3" required></textarea><br><br>
+
+    <button type="submit" class="btn checkout-btn">Place Order</button>
+</form>
+
+{% else %}
+<p>Your cart is empty. <a href="{% url 'cart_detail' %}">Go back to cart</a></p>
+{% endif %}
+
+</div>
+
+</body>
+</html>
