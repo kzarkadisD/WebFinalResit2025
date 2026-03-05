@@ -111,4 +111,15 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+# Login / logout redirects
+LOGIN_URL = '/login/'                 # page to redirect if not logged in
+LOGIN_REDIRECT_URL = '/search/'       # after successful login
+LOGOUT_REDIRECT_URL = '/search/'      # after logout
+
+# Session & cookie security (for production, optional in dev)
+SESSION_COOKIE_SECURE = False  # True in production
+CSRF_COOKIE_SECURE = False     # True in production
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
