@@ -112,7 +112,7 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 # Login / logout redirects
-LOGIN_URL = '/login/'                 # page to redirect if not logged in
+
 LOGIN_REDIRECT_URL = '/search/'       # after successful login
 LOGOUT_REDIRECT_URL = '/search/'      # after logout
 
